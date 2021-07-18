@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wqm.myjz.dao.extend.ProductExtendMapper">
+
+    <select id="selectAllWithCategory" resultMap="ProductExtendResultMap">
+        SELECT * FROM jz_product
+    </select>
+
+    <resultMap id="ProductExtendResultMap"
+               type="com.wqm.myjz.bean.extend.ProductExtend" extends="com.wqm.myjz.dao.ProductMapper.BaseResultMap">
+        <association property="category" column="category_id" select="com.wqm.myjz.dao.CategoryMapper.selectByPrimaryKey"></association>
+    </resultMap>
+</mapper>
